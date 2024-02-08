@@ -15,7 +15,6 @@ class Category(MPTTModel):
         verbose_name="Категория"
     )
 
-
     def __str__(self):
         return self.title
 

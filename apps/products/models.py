@@ -1,5 +1,4 @@
 import os
-
 from django.db import models
 
 from ckeditor.fields import RichTextField
@@ -46,7 +45,7 @@ class ProductImage(models.Model):
 
     image = models.ImageField(
         upload_to=upload_products,
-        verbose_name="Картинка"
+        verbose_name="Картинка",
     )
 
     def delete(self, using=None, keep_parents=False):
