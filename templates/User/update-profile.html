@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% block title %}
+	{{ website.title }}
+{% endblock %}
+{% block content %}
+    {% include 'base/header.html' %}
+    {% csrf_token %}
+        <form action="{% url 'update' user.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'detail' user.id %}">
+            <button type="submit">Сохранить</button>
+            </a>
+        </form>
 
-</body>
-</html>
+        <form action="{% url 'delete_avatar' user.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Удалить аватар</button>
+        </form>
+
+    {% include 'base/footer.html' %}
+{% endblock %}

@@ -8,26 +8,30 @@
 
       <div class="container">
 
-        <a href="#" class="header-logo">
+        <a href="{% url 'product_list' %}" class="header-logo">
 {#          <img src="../static/assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">#}
-            <h2 style="color: black">Akneit</h2>
+            <h2 style="color: black">{{ website.title }}</h2>
         </a>
 
         <div class="header-search-container">
 
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+            <label>
+                <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+            </label>
 
-          <button class="search-btn">
+            <button class="search-btn">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
         </div>
 
         <div class="header-user-actions">
-
+        <a href="{% url 'detail' user.id %}">
           <button class="action-btn">
             <ion-icon name="person-outline"></ion-icon>
           </button>
+        </a>
+
 
           <button class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
@@ -52,151 +56,38 @@
         <ul class="desktop-menu-category-list">
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Home</a>
+            <a href="{% url 'product_list' %}" class="menu-title">Home</a>
           </li>
 
           <li class="menu-category">
             <a href="#" class="menu-title">Categories</a>
 
             <div class="dropdown-panel">
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Desktop</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Laptop</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Camera</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Tablet</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Headphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="../static/assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250"
-                      height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
+                {% for category in nav_categories %}
+                    <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Men's</a>
+                  <a href="#">{{ category.title }}</a>
                 </li>
 
                 <li class="panel-list-item">
-                  <a href="#">Formal</a>
+                  <a href="#">{{ products.title }}</a>
                 </li>
 
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sports</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Jacket</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sunglasses</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="../static/assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119">
-                  </a>
-                </li>
+                {% for child in category.children.all %}
+                    <li class="panel-list-item">
+                      <a href="#">{{ child.title }}</a>
+                    </li>
+                    {% endfor %}
+                    <li class="panel-list-item">
+                      <a href="#">
+                        <img src="{{ category.image.url }}" alt="headphone collection" width="250"
+                          height="119">
+                      </a>
+                    </li>
 
               </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Women's</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Formal</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Perfume</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Cosmetics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Bags</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="../static/assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smartwatch</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smart TV</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Keyboard</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Mouse</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Microphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="../static/assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
+                {% endfor %}
             </div>
           </li>
 

@@ -14,6 +14,7 @@ class CustomUser(AbstractUser):
         verbose_name="Аватар"
     )
 
+
     def delete(self, using=None, keep_parents=False):
         os.remove(self.avatar.path)
         super().delete(using=None, keep_parents=False)

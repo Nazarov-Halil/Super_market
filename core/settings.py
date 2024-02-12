@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.categories',
     'apps.users',
     'apps.products',
+    'apps.website',
 
 ]
 
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Bishkek'
 
@@ -139,3 +140,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'product_list'
+
+LOGOUT_REDIRECT_URL = 'product_list'
+

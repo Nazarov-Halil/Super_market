@@ -8,16 +8,23 @@ class Category(MPTTModel):
         verbose_name="Название"
     )
     parent = TreeForeignKey(
-        'self', on_delete=models.CASCADE,
+        'self',
+        on_delete=models.CASCADE,
         related_name='children',
         null=True,
         blank=True,
         verbose_name="Категория"
+    )
+    image = models.ImageField(
+        upload_to='categories/',
+        blank=True,
+        null=True,
+        verbose_name="Картинка"
     )
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = "Категори"
-        verbose_name_plural = "Категории"
+        verbose_name = "category"
+        verbose_name_plural = "categories"

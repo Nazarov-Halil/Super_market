@@ -2,6 +2,7 @@ import os
 from django.db import models
 
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 from apps.categories.models import Category
 from utils.image_path import upload_products
@@ -31,6 +32,17 @@ class Product(models.Model):
         auto_now_add=True,
         verbose_name="Дата создание",
     )
+
+    slug = models.SlugField(
+        max_length=100,
+        unique=True,
+        blank=True,
+        null=True
+    )
+
+    def get_absolute_url(self):
+
+        return reverse('product_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title
