@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     #Library
     'mptt',
     'ckeditor',
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.products',
     'apps.website',
+    'apps.cart',
+    'apps.favorites'
 
 ]
 

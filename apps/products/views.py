@@ -5,6 +5,7 @@ from apps.categories.models import Category
 from apps.products.models import Product
 from apps.website.models import WebSiteSettings
 
+
 class ProductListView(generic.ListView):
     model = Product
     template_name = 'base/../../templates/index.html'
@@ -27,5 +28,3 @@ class ProductDetailView(generic.DetailView):
     model = Product
     slug_field = 'slug'
     template_name = 'detail.html'
-
-

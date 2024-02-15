@@ -6,10 +6,10 @@ class SliderInline(admin.TabularInline):
     model = WebSiteSettings.slider.through
     extra = 3
 
+
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
     list_display = ['image']
-
 
 
 @admin.register(WebSiteSettings)

@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block title %}
+    Избранный
+{% endblock %}
+{% block content %}
+
+    {% include 'base/header.html' %}
+
+    <main>
+        <ul>
+            {% for item in favorite.items_favorites.all %}
+            <li>
+                <div style="padding: 30px;display:flex;align-items: center;justify-content: space-evenly">
+                    <img src="{{ item.product.images.first }}" style="width: 250px;height: 250px;" alt="Product">
+                    <h1 style="margin-left: 50px">{{ item.product.title }}</h1>
+                    <p>{{ item.product.price }}  som</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <center>
+            <div style="border-bottom: 2px solid black;width: 75%;"></div>
+        </center>
+    </main>
+
+    {% include 'base/footer.html' %}
+{% endblock %}

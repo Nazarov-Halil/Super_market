@@ -6,22 +6,25 @@
 {% block content %}
 	{% include 'base/header.html' %}
     <main>
-
-            <div style="display: flex; justify-content: center;">
-                <div class="item-element" >
-                    <h1 style="padding-bottom: 20px">{{ product.title }}</h1>
-                    {{ product.description|safe }}
-                        <ul style="padding:20px;display: flex" >
-                            {% for image in product.images.all %}
-                                <li style="padding: 30px"><img src="{{ image.image.url }}" alt="" style="width: 300px; height: 300px"></li>
-                            {% endfor %}
-                        </ul>
-                <center>
+        <div style="display: flex; justify-content: center;">
+            <div class="item-element" >
+                <h1 style="padding-bottom: 20px">{{ product.title }}</h1>
+                {{ product.description|safe }}
+                    <ul style="padding:20px;display: flex" >
+                        {% for image in product.images.all %}
+                            <li style="padding: 30px"><img src="{{ image.image.url }}" alt="" style="width: 300px; height: 300px"></li>
+                        {% endfor %}
+                    </ul>
+            <center>
+                <div style="display: flex;align-items: center;gap: 20px">
                     <p class="price" style="font-size: 40px;color: white;background-color: red">{{ product.price }} som</p>
-                </center>
+                    <a href="{% url 'favorite' %}">
+                        <button style="font-size: 20px;background: red;color: white;padding: 5px;">Добавить в Избранный</button>
+                    </a>
                 </div>
+            </center>
             </div>
-
+        </div>
     </main>
     {% include 'base/footer.html' %}
 {% endblock %}

@@ -22,7 +22,6 @@ class WebSiteSettings(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-
     class Meta:
         verbose_name = 'Настройка сайта'
         verbose_name_plural = 'Настройки сайта'
