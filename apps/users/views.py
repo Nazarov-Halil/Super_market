@@ -2,7 +2,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView
 from django.contrib.auth import get_user_model, logout
-from apps.users.forms import UserFrom, UserUpdateForm, AvatarForm
+from apps.users.forms import UserCreateFrom, UserUpdateForm, AvatarForm
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -10,9 +10,9 @@ User = get_user_model()
 
 class SignUpView(CreateView):
     model = User
-    form_class = UserFrom
-    success_url = reverse_lazy('login')
-    template_name = 'User/update-profile.html'
+    form_class = UserCreateFrom
+    success_url = reverse_lazy('product_list')
+    template_name = 'createuser.html'
 
 
 class UpdateUserView(UpdateView):

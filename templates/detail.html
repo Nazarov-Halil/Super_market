@@ -12,15 +12,20 @@
                 {{ product.description|safe }}
                     <ul style="padding:20px;display: flex" >
                         {% for image in product.images.all %}
-                            <li style="padding: 30px"><img src="{{ image.image.url }}" alt="" style="width: 300px; height: 300px"></li>
+                            <li style="padding: 30px"><img src="{{ image.image.url }}" alt="Images" style="width: 300px; height: 300px;"></li>
                         {% endfor %}
                     </ul>
             <center>
                 <div style="display: flex;align-items: center;gap: 20px">
                     <p class="price" style="font-size: 40px;color: white;background-color: red">{{ product.price }} som</p>
-                    <a href="{% url 'favorite' %}">
-                        <button style="font-size: 20px;background: red;color: white;padding: 5px;">Добавить в Избранный</button>
-                    </a>
+                        {% if product not in favorite.items_favorites.all %}
+                            <h1>Продукт добавлен в избранный</h1>
+                            {% else %}
+                            <form method="post" action="{% url 'add_to_favorite' product.pk %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button type="submit" style="background: red">Add to Favorites</button>
+                            </form>
+                        {% endif %}
                 </div>
             </center>
             </div>

@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block title %}
+	{{ website.title }}
+{% endblock %}
+{% block content %}
+    {% include 'base/header.html' %}
+    {% csrf_token %}
+        <form action="{% url 'signup' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'product_list' %}">
+                <button type="submit">Сохранить</button>
+            </a>
+        </form>
+
+        <form action="{% url 'delete_avatar' user.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Удалить аватар</button>
+        </form>
+
+    {% include 'base/footer.html' %}
+{% endblock %}

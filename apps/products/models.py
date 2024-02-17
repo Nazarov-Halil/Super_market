@@ -7,7 +7,6 @@ from django.urls import reverse
 from apps.categories.models import Category
 from utils.image_path import upload_products
 
-
 class Product(models.Model):
     category = models.ForeignKey(
         Category,
@@ -66,3 +65,4 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f'{self.image.url}'
+

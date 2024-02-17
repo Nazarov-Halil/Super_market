@@ -4,7 +4,7 @@ from django import forms
 from apps.users.models import CustomUser
 
 
-class UserFrom(UserCreationForm):
+class UserCreateFrom(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ('username', 'display_name', 'avatar')
